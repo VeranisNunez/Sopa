@@ -15,7 +15,7 @@ export default function Sopa() {
     ['A', 'D', 'E', 'M', 'E', 'R', 'L', 'S', 'O', 'B', 'A', 'S', 'L'],
     ['D', 'D', 'E', 'P', 'E', 'A', 'E', 'O', 'T', 'O', 'R', 'O', 'A']
   ]
-  // Pabras a buscar: SOPA WEB CELULAR SISTEMA SEGURIDAD
+  // Palabras a buscar: SOPA WEB CELULAR SISTEMA SEGURIDAD
 
   //GENERAR TABLA
   function generarMatriz() {
@@ -51,6 +51,7 @@ export default function Sopa() {
     e.preventDefault();
 
     let posicion = document.querySelector('#posicion')
+    posicion.innerHTML = ""
     let palabra = document.querySelector('#inputpalabra').value.trim().toUpperCase()
 
     for (let fil = 0; fil < matriz.length; fil++) {
