@@ -77,7 +77,7 @@ export default function Sopa() {
                 let celdacolor = document.querySelector(`.color${fil}-${col + m}`)
                 celdacolor.style.background = 'yellow'
               }
-              posicion.innerHTML = `La palabra encontrada comienza en la posición [${fil},${col}]`
+              posicion.innerHTML = `La palabra encontrada comienza en la posición [${col},${matriz.length - (fil+1)}]`
             }
           }
 
@@ -96,7 +96,7 @@ export default function Sopa() {
                 let celdacolor = document.querySelector(`.color${fil}-${col - m}`)
                 celdacolor.style.background = 'yellow'
               }
-              posicion.innerHTML = `La palabra encontrada comienza en la posición [${fil},${col}]`
+              posicion.innerHTML = `La palabra encontrada comienza en la posición [${col},${matriz.length - (fil+1)}]`
             }
           }
 
@@ -115,7 +115,7 @@ export default function Sopa() {
                 let celdacolor = document.querySelector(`.color${fil + m}-${col}`)
                 celdacolor.style.background = 'yellow'
               }
-              posicion.innerHTML = `La palabra encontrada comienza en la posición [${fil},${col}]`
+              posicion.innerHTML = `La palabra encontrada comienza en la posición [${col},${matriz.length - (fil+1)}]`
             }
           }
 
@@ -134,7 +134,7 @@ export default function Sopa() {
                 let celdacolor = document.querySelector(`.color${fil - m}-${col}`)
                 celdacolor.style.background = 'yellow'
               }
-              posicion.innerHTML = `La palabra encontrada comienza en la posición [${fil},${col}]`
+              posicion.innerHTML = `La palabra encontrada comienza en la posición [${col},${matriz.length - (fil+1)}]`
             }
           }
 
@@ -153,7 +153,7 @@ export default function Sopa() {
                 let celdacolor = document.querySelector(`.color${fil - m}-${col - m}`)
                 celdacolor.style.background = 'yellow'
               }
-              posicion.innerHTML = `La palabra encontrada comienza en la posición [${fil},${col}]`
+              posicion.innerHTML = `La palabra encontrada comienza en la posición [${col},${matriz.length - (fil+1)}]`
             }
           }
 
@@ -172,7 +172,7 @@ export default function Sopa() {
                 let celdacolor = document.querySelector(`.color${fil - m}-${col + m}`)
                 celdacolor.style.background = 'yellow'
               }
-              posicion.innerHTML = `La palabra encontrada comienza en la posición [${fil},${col}]`
+              posicion.innerHTML = `La palabra encontrada comienza en la posición [${col},${matriz.length - (fil+1)}]`
             }
           }
 
@@ -191,7 +191,7 @@ export default function Sopa() {
                 let celdacolor = document.querySelector(`.color${fil + m}-${col - m}`)
                 celdacolor.style.background = 'yellow'
               }
-              posicion.innerHTML = `La palabra encontrada comienza en la posición [${fil},${col}]`
+              posicion.innerHTML = `La palabra encontrada comienza en la posición [${col},${matriz.length - (fil+1)}]`
             }
           }
 
@@ -210,7 +210,7 @@ export default function Sopa() {
                 let celdacolor = document.querySelector(`.color${fil + m}-${col + m}`)
                 celdacolor.style.background = 'yellow'
               }
-              posicion.innerHTML = `La palabra encontrada comienza en la posición [${fil},${col}]`
+              posicion.innerHTML = `La palabra encontrada comienza en la posición [${col},${matriz.length - (fil+1)}]`
             }
           }
         }
