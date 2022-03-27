@@ -1,3 +1,5 @@
+import { useEffect } from "react"
+
 export default function Sopa() {
 
   let matriz = [
@@ -17,9 +19,10 @@ export default function Sopa() {
   ]
   // Palabras a buscar: SOPA WEB CELULAR SISTEMA SEGURIDAD
 
+  useEffect(() => crearTabla(matriz))
+
   //GENERAR TABLA
-  function generarMatriz() {
-    console.table(matriz)
+  function limpiar() {
     document.querySelector('#posicion').innerHTML = ""
     document.querySelector('#inputpalabra').value = ""
     crearTabla(matriz)
@@ -27,7 +30,7 @@ export default function Sopa() {
 
   function crearTabla(matriz) {
     let tabla = document.createElement('table')
-    tabla.classList.add('table', 'table-bordered')
+    tabla.classList.add('table', 'table-bordered', 'border', 'border-dark')
     let tbody = document.createElement('tbody')
 
     for (let fil = 0; fil < matriz.length; fil++) {
@@ -63,13 +66,9 @@ export default function Sopa() {
           if (col + (palabra.length - 1) < matriz[fil].length) {
             let encontrada = true
             for (let m = 1; m < palabra.length; m++) {
-              while (encontrada == true) {
-                if (palabra[m] == matriz[fil][col + m]) {
-                  encontrada = true
-                  break
-                } else {
+              if (encontrada == true) {
+                if (palabra[m] != matriz[fil][col + m]) {
                   encontrada = false
-                  break
                 }
               }
             }
@@ -86,13 +85,9 @@ export default function Sopa() {
           if (col - (palabra.length - 1) >= 0) {
             let encontrada2 = true
             for (let m = 1; m < palabra.length; m++) {
-              while (encontrada2 == true) {
-                if (palabra[m] == matriz[fil][col - m]) {
-                  encontrada2 = true
-                  break
-                } else {
+              if (encontrada2 == true) {
+                if (palabra[m] != matriz[fil][col - m]) {
                   encontrada2 = false
-                  break
                 }
               }
             }
@@ -109,13 +104,9 @@ export default function Sopa() {
           if (fil + (palabra.length - 1) < matriz.length) {
             let encontrada3 = true
             for (let m = 1; m < palabra.length; m++) {
-              while (encontrada3 == true) {
-                if (palabra[m] == matriz[fil + m][col]) {
-                  encontrada3 = true
-                  break
-                } else {
+              if (encontrada3 == true) {
+                if (palabra[m] != matriz[fil + m][col]) {
                   encontrada3 = false
-                  break
                 }
               }
             }
@@ -132,13 +123,9 @@ export default function Sopa() {
           if (fil - (palabra.length - 1) >= 0) {
             let encontrada4 = true
             for (let m = 1; m < palabra.length; m++) {
-              while (encontrada4 == true) {
-                if (palabra[m] == matriz[fil - m][col]) {
-                  encontrada4 = true
-                  break
-                } else {
+              if (encontrada4 == true) {
+                if (palabra[m] != matriz[fil - m][col]) {
                   encontrada4 = false
-                  break
                 }
               }
             }
@@ -155,13 +142,9 @@ export default function Sopa() {
           if ((fil - (palabra.length - 1) >= 0) && (col - (palabra.length - 1) >= 0)) {
             let encontrada5 = true
             for (let m = 1; m < palabra.length; m++) {
-              while (encontrada5 == true) {
-                if (palabra[m] == matriz[fil - m][col - m]) {
-                  encontrada5 = true
-                  break
-                } else {
+              if (encontrada5 == true) {
+                if (palabra[m] != matriz[fil - m][col - m]) {
                   encontrada5 = false
-                  break
                 }
               }
             }
@@ -178,13 +161,9 @@ export default function Sopa() {
           if ((fil - (palabra.length - 1) >= 0) && (col + (palabra.length - 1) < matriz[fil].length)) {
             let encontrada6 = true
             for (let m = 1; m < palabra.length; m++) {
-              while (encontrada6 == true) {
-                if (palabra[m] == matriz[fil - m][col + m]) {
-                  encontrada6 = true
-                  break
-                } else {
+              if (encontrada6 == true) {
+                if (palabra[m] != matriz[fil - m][col + m]) {
                   encontrada6 = false
-                  break
                 }
               }
             }
@@ -201,13 +180,9 @@ export default function Sopa() {
           if ((fil + (palabra.length - 1) < matriz.length) && (col - (palabra.length - 1) >= 0)) {
             let encontrada7 = true
             for (let m = 1; m < palabra.length; m++) {
-              while (encontrada7 == true) {
-                if (palabra[m] == matriz[fil + m][col - m]) {
-                  encontrada7 = true
-                  break
-                } else {
+              if (encontrada7 == true) {
+                if (palabra[m] != matriz[fil + m][col - m]) {
                   encontrada7 = false
-                  break
                 }
               }
             }
@@ -224,13 +199,9 @@ export default function Sopa() {
           if ((fil + (palabra.length - 1) < matriz.length) && (col + (palabra.length - 1) <= matriz[fil].length)) {
             let encontrada8 = true
             for (let m = 1; m < palabra.length; m++) {
-              while (encontrada8 == true) {
-                if (palabra[m] == matriz[fil + m][col + m]) {
-                  encontrada8 = true
-                  break
-                } else {
+              if (encontrada8 == true) {
+                if (palabra[m] != matriz[fil + m][col + m]) {
                   encontrada8 = false
-                  break
                 }
               }
             }
@@ -252,32 +223,35 @@ export default function Sopa() {
 
   return (
     <div className='container'>
-
-      <div className="header">
-        <h1 className="pb-3">Sopa de letras</h1>
-        <div className="p-5" style={{textAlign: 'left'}}>
-          <div>
-            <button type="button" className="btn btn-primary mb-3" onClick={generarMatriz}>Limpiar y generar matriz</button>
-          </div>
-          <div>
-            <form className="row g-3" onSubmit={buscar}>
-              <div className="col-auto">
-                <label>Palabra a buscar : </label>
-              </div>
-              <div className="col-3">
-                <input type="text" className="form-control" id="inputpalabra" required />
-              </div>
-              <div className="col-auto">
-                <button type="submit" className="btn btn-primary mb-3">Buscar</button>
-              </div>
-            </form>
-          </div>
-          <div>
-            <label id='posicion'></label>
+      <div className="row">
+        <h1 className="pt-4 pb-5 fw-bolder">SOPA DE LETRAS</h1>
+        <div className="col">
+          <div className="header" style={{ textAlign: 'left' }}>
+            <div>
+              <button type="button" className="btn btn-primary px-4" onClick={limpiar}>Limpiar sopa de letras </button>
+            </div>
+            <div className="py-4">
+              <form className="row" onSubmit={buscar}>
+                <div className="col-auto aux">
+                  <label>Palabra a buscar : </label>
+                </div>
+                <div className="col-5 aux">
+                  <input type="text" className="form-control" id="inputpalabra" required />
+                </div>
+                <div className="col-auto aux">
+                  <button type="submit" className="btn btn-primary px-4">Buscar</button>
+                </div>
+              </form>
+            </div>
+            <div>
+              <label id='posicion'></label>
+            </div>
           </div>
         </div>
+        <div className="col">
+          <div className="sopa"></div>
+        </div>
       </div>
-      <div className="sopa"></div>
     </div>
   )
 }
